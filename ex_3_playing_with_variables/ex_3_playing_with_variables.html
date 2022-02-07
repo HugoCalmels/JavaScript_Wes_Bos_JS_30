@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1> Update variables with CSS and <span class="hl">JS</span></h1>
+
+  <div class="controls">
+    <label for="spacing">Spacing:</label>
+    <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" data-coool="hugo">
+
+    <label for="blur">Blur:</label>
+    <input type="range" name="blur" min="0" max="15" value="0" data-sizing="px">
+
+    <label for="base">Color:</label>
+    <input type="color" name="base" value="#FF4500">
+</div>
+<img id="img" src="https://media.istockphoto.com/photos/capitole-de-toulouse-at-evening-picture-id865856062">
+
+
+
+<style>
+  :root {
+    --base: #FF4500;
+    --spacing: 10px;
+    --blur: 0px;
+  }
+
+  body{
+    font-family: 'helvetica neue', sans-serif;
+    min-height: 100vh; /* height of the browser viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+  img{
+    margin-top: 50px;
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur));
+  }
+
+  .hl {
+    color: var(--base);
+  }
+</style>
+
+  <script src="./ex_3_playing_with_variables.js"></script>
+</body>
+</html>
