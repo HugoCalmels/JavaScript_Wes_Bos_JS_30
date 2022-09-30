@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {box-sizing:border-box;}
+    body {
+      background-color:orange;
+
+    }
+    .inbox {
+      position: absolute;
+      left: 60%;
+      top: 10%;
+
+      background-color: white;
+      box-shadow: 10px 5px 5px darkgray;
+      overflow: visible;
+
+
+
+    }
+
+    .item {
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+
+    }
+
+    .item input{
+      margin: 2em;
+      height: 4vh;
+
+    
+      line-height:2em;
+      border: 1px 10px solid lightgray;
+      outline: 1px solid lightgray;
+
+      display: block;
+
+
+    }
+    .item p{
+      margin: 2em;
+      border: 1px solid lightgray;
+      height: 4vh;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>This is an inbox layout</p>
+    </div>
+  </div>
+  
+  <script>
+    let items = document.querySelectorAll('.item')
+    let oldIndex = -1
+
+    items.forEach((e, index) => {
+      let checked = false
+      let paragraph = e.querySelector('p')
+      let checkbox = e.querySelector('input')
+
+     
+      checkbox.addEventListener('click', () => {
+        if ( checked === false ){
+
+          paragraph.style.textDecorationLine = 'line-through';
+          let res = index - oldIndex;
+
+          if ( res > 0 ){
+            console.log('res++')
+            console.log(`oldIndex ${oldIndex}`)
+          console.log(`index ${index}`)
+
+          items.forEach((nestedElem, nestedIndex) => {
+ 
+            if ( nestedIndex > oldIndex && nestedIndex < index ){
+              console.log('test')
+              let nestedParagraph = nestedElem.querySelector('p')
+              let nestedCheckbox = nestedElem.querySelector('input')
+              nestedParagraph.style.textDecorationLine = 'line-through';
+              nestedCheckbox.checked = true
+            }
+          })
+          
+          } else if ( res < 0 ){
+          console.log('res --')
+          console.log(`oldIndex ${oldIndex}`)
+          console.log(`index ${index}`)
+          }
+
+          checked = true
+          oldIndex = index
+      
+        }
+        else {
+          paragraph.style.textDecorationLine = 'none';
+          checked = false
+          oldIndex = -1
+        }
+      })
+    })
+  </script>
+</body>
+</html>
